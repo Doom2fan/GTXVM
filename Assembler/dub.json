@@ -1,0 +1,14 @@
+{
+    "name" : "gtxvm-assembler",
+    "description": "A sidescroller made with DSFML.",
+    "version": "1.0.0",
+
+    "authors": [ "Chronos \"phantombeta\" Ouroboros" ],
+    "license": "GPL-2.0",
+    "copyright": "Copyright (C) 2017, Dark Realm",
+
+    "targetType": "executable",
+    "targetPath": "bin",
+
+    "sourcePaths": [ "src" ]
+}

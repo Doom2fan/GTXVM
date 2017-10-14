@@ -1,0 +1,55 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GTXVMTestUI"
+        xmlns:GTXVM="clr-namespace:GTXVM"
+        xmlns:Properties="clr-namespace:GTXVMTestUI.Properties"
+        x:Name="mainWindow" x:Class="GTXVMTestUI.MainWindow"
+        mc:Ignorable="d"
+        Title="GTX VM Test UI" Height="500" Width="699">
+    <Window.Resources>
+        <CollectionViewSource x:Key="gTXScriptViewSource"/>
+    </Window.Resources>
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo ProgressState="Paused"/>
+    </Window.TaskbarItemInfo>
+    <Grid MinWidth="300" MinHeight="300">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label x:Name="labelStack" Content="Stack:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" />
+        <ListBox x:Name="listBoxStack" Margin="10,72,0,10" HorizontalAlignment="Left" Width="112"/>
+        <Label x:Name="labelRAM" Content="Memory:" HorizontalAlignment="Left" Margin="127,0,0,402" VerticalAlignment="Bottom"/>
+        <Button x:Name="buttonExec" Content="Run" Margin="0,0,10,10" Click="buttonExec_Click" HorizontalAlignment="Right" Width="35" Height="25" VerticalAlignment="Bottom"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="127,72,10,41">
+            <TextBlock x:Name="textBlockRAMContents" Margin="-1,-1,-2,-1" TextWrapping="Wrap"/>
+        </Border>
+        <Button x:Name="buttonExecSingle" Content="Run next instruction" Margin="0,0,121,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="buttonExecSingle_Click"/>
+        <Button x:Name="buttonExecNextTic" Content="Run next tic" Margin="0,0,50,10" Height="25" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="66" Click="buttonExecNextTic_Click"/>
+        <Menu x:Name="menuMenubar" VerticalAlignment="Top" Height="36" Foreground="Gainsboro" Margin="0" Padding="0,8,0,0" RenderTransformOrigin="0.5,0.5">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1E1E1E"/>
+                    <GradientStop Color="#FF1E1E1E" Offset="1"/>
+                    <GradientStop Color="#FF282828" Offset="0.5"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem x:Name="menuItemFile" Header="File">
+                <MenuItem x:Name="menuItemOpenLib" Header="Open Library" Click="menuItemOpenLib_Click" Foreground="Black"/>
+                <Separator Foreground="Black"/>
+                <MenuItem x:Name="menuItemExit" Header="Exit" Click="menuItemExit_Click" Foreground="Black"/>
+            </MenuItem>
+            <MenuItem Header="Library">
+                <MenuItem x:Name="menuItemRunScript" Header="Run Script" Click="menuItemRunScript_Click" Foreground="Black"/>
+                <MenuItem x:Name="menuItemRunNamedScript" Header="Run Named Script" Click="menuItemRunNamedScript_Click" Foreground="Black"/>
+                <MenuItem x:Name="menuItemSelectScript" Header="Select Script" Click="menuItemSelectScript_Click"  Foreground="Black"/>
+                <MenuItem x:Name="menuItemStopScript" Header="Stop Script" Click="menuItemStopScript_Click" Foreground="Black"/>
+                <MenuItem x:Name="menuItemStopAll" Header="Stop All Scripts" Click="menuItemStopAll_Click" Foreground="Black"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock x:Name="textBlockScriptState" HorizontalAlignment="Left" Margin="204,0,0,10" TextWrapping="Wrap" RenderTransformOrigin="0.02,1.003" Width="116" Height="26" VerticalAlignment="Bottom" TextDecorations="{x:Null}" Padding="5" Text="{Binding /State}"/>
+        <Button x:Name="buttonRestart" Content="Restart" HorizontalAlignment="Right" Margin="0,0,236,10" VerticalAlignment="Bottom" Height="25" Click="buttonRestart_Click"/>
+    </Grid>
+</Window>
